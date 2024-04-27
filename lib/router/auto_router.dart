@@ -39,5 +39,9 @@ class AppRouter extends $AppRouter {
           page: LoginRoute.page,
           path: '/login',
         ),
+        AutoRoute(
+          page: AddCencorRoute.page,
+          path: '/add-sensor',
+        ),
       ];
 }

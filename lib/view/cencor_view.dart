@@ -33,7 +33,56 @@ class CencorView extends StatelessWidget {
         SensorCard(),
         SensorCard(),
         SensorCard(),
+        AddSensorCard()
       ],
+    );
+  }
+}
+
+class AddSensorCard extends StatelessWidget {
+  const AddSensorCard({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () => context.router.pushNamed('/add-sensor'),
+      child: Container(
+        padding: const EdgeInsets.all(10),
+        margin: const EdgeInsets.only(left: 16, right: 16, bottom: 16),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(24),
+          border: Border.all(
+            color: const Color(0xFF25A047),
+          ),
+        ),
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Center(
+                child: Text(
+                  "Add Sensor",
+                  style: TextStyle(
+                    color: Theme.of(context).primaryColor,
+                    fontSize: 20,
+                    fontWeight: FontWeight.w400,
+                  ),
+                ),
+              ),
+            ),
+            Center(
+              child: Icon(
+                Icons.add,
+                color: Theme.of(context).primaryColor,
+                size: 40,
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
