@@ -8,11 +8,16 @@ class App extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return MaterialApp.router(
-      title: 'Cookers Demo',
+      debugShowCheckedModeBanner: false,
+      title: 'Echron',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
+          colorScheme: ColorScheme.fromSeed(
+            seedColor: const Color(0xFF29B674),
+            primary: const Color(0xFF29B674),
+          ),
+          useMaterial3: true,
+          fontFamily: 'Tommy',
+          primaryColor: const Color(0xFF29B674)),
       routerConfig: ref.read(appRouterProvider).config(),
     );
   }

@@ -9,32 +9,32 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:auto_route/auto_route.dart' as _i2;
-import 'package:cookers_app/view/main_view.dart' as _i1;
+import 'package:cookers_app/view/entry_view.dart' as _i1;
 
 abstract class $AppRouter extends _i2.RootStackRouter {
   $AppRouter({super.navigatorKey});
 
   @override
   final Map<String, _i2.PageFactory> pagesMap = {
-    MainRoute.name: (routeData) {
+    EntryRoute.name: (routeData) {
       return _i2.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i1.MainView(),
+        child: const _i1.EntryView(),
       );
     }
   };
 }
 
 /// generated route for
-/// [_i1.MainView]
-class MainRoute extends _i2.PageRouteInfo<void> {
-  const MainRoute({List<_i2.PageRouteInfo>? children})
+/// [_i1.EntryView]
+class EntryRoute extends _i2.PageRouteInfo<void> {
+  const EntryRoute({List<_i2.PageRouteInfo>? children})
       : super(
-          MainRoute.name,
+          EntryRoute.name,
           initialChildren: children,
         );
 
-  static const String name = 'MainRoute';
+  static const String name = 'EntryRoute';
 
   static const _i2.PageInfo<void> page = _i2.PageInfo<void>(name);
 }
