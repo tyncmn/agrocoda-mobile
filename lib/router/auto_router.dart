@@ -28,5 +28,9 @@ class AppRouter extends $AppRouter {
             ),
           ],
         ),
+        AutoRoute(
+          page: LoginRoute.page,
+          path: '/login',
+        ),
       ];
 }
