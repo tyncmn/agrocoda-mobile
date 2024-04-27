@@ -7,4 +7,11 @@ abstract class AssetConst {
   static const String helpButton = 'assets/components/help.svg';
   static const String referButton = 'assets/components/refer.svg';
   static const String feedbackButton = 'assets/components/feedback.svg';
+
+  //
+  static const String menuButton = 'assets/components/menu.svg';
+
+  static const String humidityButton = 'assets/components/humidity.svg';
+  static const String phButton = 'assets/components/ph.svg';
+  static const String temperaturButton = 'assets/components/temperatur.svg';
 }
