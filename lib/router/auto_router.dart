@@ -19,12 +19,19 @@ class AppRouter extends $AppRouter {
         AutoRoute(
           page: MainRoute.page,
           initial: true,
+          path: '/main',
           children: [
             AutoRoute(
               page: HomeRoute.page,
             ),
             AutoRoute(
               page: CencorRoute.page,
+            ),
+            AutoRoute(
+              page: MapRoute.page,
+            ),
+            AutoRoute(
+              page: ProfileRoute.page,
             ),
           ],
         ),

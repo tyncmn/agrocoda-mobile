@@ -69,7 +69,7 @@ class _LoginViewState extends State<LoginView> {
               children: [
                 AuthTextField(
                   textEditingController: mailContoller,
-                  hintText: 'Your mail',
+                  hintText: 'Your ID',
                 ),
                 const SizedBox(height: 16),
                 AuthTextField(
@@ -93,7 +93,7 @@ class _LoginViewState extends State<LoginView> {
           const Spacer(),
           CustomButton(
             title: 'Login',
-            onTap: () {},
+            onTap: () => context.router.replaceNamed('/main'),
             color: context.primaryColor,
             textStyle: context.mediumTextStyle.copyWith(
               color: Colors.white,

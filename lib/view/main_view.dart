@@ -14,7 +14,9 @@ class MainView extends StatelessWidget {
     return AutoTabsRouter(
       routes: const [
         HomeRoute(),
-        CencorRoute()
+        CencorRoute(),
+        MapRoute(),
+        ProfileRoute(),
       ],
       curve: Curves.easeInOut,
       duration: const Duration(milliseconds: 400),
@@ -38,18 +40,18 @@ class MainView extends StatelessWidget {
           context.tabsRouter.activeIndex * (width / 5),
           height,
         );
-
         return ClipPath(
-            clipper: CircleTransitionClipper(
-              center: centerCircleOffset,
-              radius: radiusTweenAnimation.value,
-            ),
-            child: Transform.scale(
-              scale: scaleTweenAnimation.value,
-              origin: centerCircleOffset,
-              alignment: Alignment.bottomCenter,
-              child: child,
-            ));
+          clipper: CircleTransitionClipper(
+            center: centerCircleOffset,
+            radius: radiusTweenAnimation.value,
+          ),
+          child: Transform.scale(
+            scale: scaleTweenAnimation.value,
+            origin: centerCircleOffset,
+            alignment: Alignment.bottomCenter,
+            child: child,
+          ),
+        );
       },
       builder: (
         context,
@@ -87,4 +89,3 @@ class CircleTransitionClipper extends CustomClipper<Path> {
   @override
   bool shouldReclip(CircleTransitionClipper oldClipper) => true;
 }
-
