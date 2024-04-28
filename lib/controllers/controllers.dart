@@ -1,6 +1,6 @@
-import 'package:cookers_app/models/models.dart';
 import 'package:cookers_app/models/request.dart';
 import 'package:cookers_app/services/repository.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final loginController =
@@ -20,6 +20,7 @@ class LoginController extends StateNotifier<AsyncValue<void>> {
       await _repository.login(request);
       state = const AsyncValue.data(null);
     } catch (e, stk) {
+      debugPrint(e.toString());
       state = AsyncValue.error(e, stk);
     }
   }
