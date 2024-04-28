@@ -94,77 +94,80 @@ class SensorCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(10),
-      margin: const EdgeInsets.only(left: 16, right: 16, bottom: 16),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(24),
-        border: Border.all(
-          color: const Color(0xFF25A047),
-        ),
-      ),
-      child: Column(
-        children: [
-          Container(
-            decoration: BoxDecoration(
-              image: const DecorationImage(
-                image: AssetImage('assets/components/image.jpg'),
-                fit: BoxFit.cover,
-              ),
-              borderRadius: BorderRadius.circular(16),
-            ),
-            height: 140,
+    return InkWell(
+      onTap: () => context.router.pushNamed('/fieldDetail'),
+      child: Container(
+        padding: const EdgeInsets.all(10),
+        margin: const EdgeInsets.only(left: 16, right: 16, bottom: 16),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(24),
+          border: Border.all(
+            color: const Color(0xFF25A047),
           ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                const Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      "Wheat Field 1",
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 20,
-                        fontWeight: FontWeight.w400,
-                      ),
-                    ),
-                    SizedBox(height: 4),
-                    Text(
-                      "5 Ha - Ağdam",
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 16,
-                        fontWeight: FontWeight.w400,
-                      ),
-                    ),
-                  ],
+        ),
+        child: Column(
+          children: [
+            Container(
+              decoration: BoxDecoration(
+                image: const DecorationImage(
+                  image: AssetImage('assets/components/image.jpg'),
+                  fit: BoxFit.cover,
                 ),
-                Container(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 4,
-                    vertical: 6,
-                  ),
-                  decoration: BoxDecoration(
-                    color: const Color(0xFFEDEDED),
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: Column(
+                borderRadius: BorderRadius.circular(16),
+              ),
+              height: 140,
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  const Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Icon(Icons.edit, color: Theme.of(context).primaryColor),
-                      const SizedBox(height: 10),
-                      Icon(Icons.settings,
-                          color: Theme.of(context).primaryColor),
+                      Text(
+                        "Wheat Field 1",
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 20,
+                          fontWeight: FontWeight.w400,
+                        ),
+                      ),
+                      SizedBox(height: 4),
+                      Text(
+                        "5 Ha - Ağdam",
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 16,
+                          fontWeight: FontWeight.w400,
+                        ),
+                      ),
                     ],
                   ),
-                )
-              ],
-            ),
-          )
-        ],
+                  Container(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 4,
+                      vertical: 6,
+                    ),
+                    decoration: BoxDecoration(
+                      color: const Color(0xFFEDEDED),
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: Column(
+                      children: [
+                        Icon(Icons.edit, color: Theme.of(context).primaryColor),
+                        const SizedBox(height: 10),
+                        Icon(Icons.settings,
+                            color: Theme.of(context).primaryColor),
+                      ],
+                    ),
+                  )
+                ],
+              ),
+            )
+          ],
+        ),
       ),
     );
   }

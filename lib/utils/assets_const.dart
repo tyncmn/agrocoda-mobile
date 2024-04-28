@@ -15,4 +15,5 @@ abstract class AssetConst {
   static const String phButton = 'assets/components/ph.svg';
   static const String temperaturButton = 'assets/components/temperatur.svg';
   static const String flowerButton = 'assets/components/flower.svg';
+  static const String wheat = 'assets/components/wheat.png';
 }
