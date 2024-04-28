@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:cookers_app/controllers/field_controller.dart';
 import 'package:cookers_app/models/request.dart';
+import 'package:cookers_app/router/auto_router.gr.dart';
 import 'package:cookers_app/widgets/button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -40,8 +41,11 @@ class _AddCencorViewState extends ConsumerState<AddCencorView> {
     ref.listen(fieldController, (previous, next) {
       next.maybeWhen(
         orElse: () {},
-        data: (_) {
-          context.router.popForced();
+        data: (data) {
+          final List<String?> names =
+              data.recommend.map<String>((e) => e?.name).toList();
+          context.router
+              .replace(SensorResultRoute(names: names as List<String>));
           ScaffoldMessenger.of(context).showSnackBar(
             const SnackBar(
               content: Text('Sensor added successfully'),
@@ -50,7 +54,7 @@ class _AddCencorViewState extends ConsumerState<AddCencorView> {
         },
         error: (error, stackTrace) {
           ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
+            const SnackBar(
               content: Text("Something went wrong"),
             ),
           );

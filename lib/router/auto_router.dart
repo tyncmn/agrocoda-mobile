@@ -45,5 +45,9 @@ class AppRouter extends $AppRouter {
           page: FieldDetailRoute.page,
           path: '/fieldDetail',
         ),
+        AutoRoute(
+          page: SensorResultRoute.page,
+          path: '/sensorResult',
+        ),
       ];
 }

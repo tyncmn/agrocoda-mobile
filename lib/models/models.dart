@@ -18,15 +18,31 @@ class LoginResponse {
 
 class FieldModel {
   final int? id;
-  final List<String>? recommend;
+  final List<Recommend?> recommend;
   const FieldModel({
     this.id,
-    this.recommend,
+    required this.recommend,
   });
   factory FieldModel.fromJson(Map<String, dynamic> json) {
     return FieldModel(
       id: json['id'],
-      recommend: (json['recommend'] as List<String>),
+      recommend: (json['recommend'] as List)
+          .map((e) => Recommend.fromJson(e))
+          .toList(),
+    );
+  }
+}
+
+class Recommend {
+  final name;
+
+  const Recommend({
+    this.name,
+  });
+
+  factory Recommend.fromJson(Map<String, dynamic> json) {
+    return Recommend(
+      name: json['name'],
     );
   }
 }

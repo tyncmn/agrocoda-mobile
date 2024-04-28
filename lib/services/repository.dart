@@ -21,9 +21,10 @@ class Repository {
     }
   }
 
-  Future<void> addField(FieldRequest request) async {
+  Future<FieldModel> addField(FieldRequest request) async {
     try {
-      await _services.addField(request);
+      final response = await _services.addField(request);
+      return response;
     } catch (e) {
       rethrow;
     }
