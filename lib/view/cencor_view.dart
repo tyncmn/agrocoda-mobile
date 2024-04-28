@@ -31,8 +31,6 @@ class CencorView extends StatelessWidget {
         ),
         SizedBox(height: 24),
         SensorCard(),
-        SensorCard(),
-        SensorCard(),
         AddSensorCard()
       ],
     );

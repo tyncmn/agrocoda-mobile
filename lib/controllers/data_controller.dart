@@ -22,4 +22,13 @@ class DataController extends StateNotifier<AsyncValue<List<Data>>> {
       state = AsyncValue.error(e, stk);
     }
   }
+
+  Future<void> getNewDatas(int id) async {
+    try {
+      final data = await _repository.getField(id);
+      state = AsyncValue.data(data);
+    } catch (e) {
+      rethrow;
+    }
+  }
 }

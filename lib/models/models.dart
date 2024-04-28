@@ -85,6 +85,11 @@ class Data {
   final double? nitrogen;
   final double? phosphorus;
   final double? potassium;
+  final double? ph;
+  final double? pressure;
+  final double? ammonium;
+  final double? oxygen;
+  final double? metan;
 
   const Data({
     required this.ardunioId,
@@ -95,6 +100,11 @@ class Data {
     this.nitrogen,
     this.phosphorus,
     this.potassium,
+    this.ph,
+    this.pressure,
+    this.ammonium,
+    this.oxygen,
+    this.metan,
   });
 
   factory Data.fromJson(Map<String, dynamic> json) {
@@ -107,6 +117,11 @@ class Data {
       nitrogen: json['nitrogen'],
       phosphorus: json['phosphorus'],
       potassium: json['potassium'],
+      ph: json['ph'],
+      pressure: json['pressure'],
+      ammonium: json['ammonium'],
+      oxygen: json['oxygen'],
+      metan: json['metan'],
     );
   }
 }
