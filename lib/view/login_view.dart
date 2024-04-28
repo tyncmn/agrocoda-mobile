@@ -1,11 +1,14 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:cookers_app/controllers/controllers.dart';
 import 'package:cookers_app/models/request.dart';
+import 'package:cookers_app/router/auto_router.gr.dart';
 import 'package:cookers_app/utils/extension.dart';
 import 'package:cookers_app/widgets/button.dart';
 import 'package:cookers_app/widgets/textfield.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+final userIdProvider = StateProvider<int>((ref) => 0);
 
 @RoutePage()
 class LoginView extends ConsumerStatefulWidget {
@@ -29,12 +32,21 @@ class _LoginViewState extends ConsumerState<LoginView> {
     ref.listen(loginController, (previous, next) {
       next.when(
         data: (value) {
-          context.router.pushNamed('/main');
+          ref.read(userIdProvider.notifier).state =
+              int.parse(mailContoller.text);
+          if (value.fields.isEmpty) {
+            context.router.replaceAll([
+              const MainRoute(),
+              const AddCencorRoute(),
+            ]);
+          } else {
+            context.router.pushNamed('/main');
+          }
         },
         loading: () {},
         error: (error, stack) {
           ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
+            const SnackBar(
               content: Text("Something went wrong! Please try again."),
             ),
           );

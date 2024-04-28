@@ -79,13 +79,13 @@ class _Services implements Services {
   @override
   Future<void> addField2(
     int id,
-    Map<String, dynamic> body,
+    SensorRequest body,
   ) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
-    _data.addAll(body);
+    _data.addAll(body.toJson());
     await _dio.fetch<void>(_setStreamType<void>(Options(
       method: 'POST',
       headers: _headers,

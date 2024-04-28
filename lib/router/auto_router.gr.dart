@@ -80,6 +80,7 @@ abstract class $AppRouter extends _i10.RootStackRouter {
         child: _i9.SensorResultView(
           key: args.key,
           names: args.names,
+          fieldId: args.fieldId,
         ),
       );
     },
@@ -204,12 +205,14 @@ class SensorResultRoute extends _i10.PageRouteInfo<SensorResultRouteArgs> {
   SensorResultRoute({
     _i11.Key? key,
     required List<String> names,
+    required int fieldId,
     List<_i10.PageRouteInfo>? children,
   }) : super(
           SensorResultRoute.name,
           args: SensorResultRouteArgs(
             key: key,
             names: names,
+            fieldId: fieldId,
           ),
           initialChildren: children,
         );
@@ -224,14 +227,17 @@ class SensorResultRouteArgs {
   const SensorResultRouteArgs({
     this.key,
     required this.names,
+    required this.fieldId,
   });
 
   final _i11.Key? key;
 
   final List<String> names;
 
+  final int fieldId;
+
   @override
   String toString() {
-    return 'SensorResultRouteArgs{key: $key, names: $names}';
+    return 'SensorResultRouteArgs{key: $key, names: $names, fieldId: $fieldId}';
   }
 }

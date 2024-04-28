@@ -35,7 +35,7 @@ abstract class Services {
   @POST('field/{id}')
   Future<void> addField2(
     @Path() int id,
-    @Body() Map<String, dynamic> body,
+    @Body() SensorRequest body,
   );
 
   @GET('fields')
@@ -48,4 +48,5 @@ abstract class Services {
     @Path() int id,
     @Body() Map<String, dynamic> body,
   );
+
 }

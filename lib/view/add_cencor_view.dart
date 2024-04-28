@@ -44,8 +44,14 @@ class _AddCencorViewState extends ConsumerState<AddCencorView> {
         data: (data) {
           final List<String?> names =
               data.recommend.map<String>((e) => e?.name).toList();
-          context.router
-              .replace(SensorResultRoute(names: names as List<String>));
+
+          final int fieldId = data.id ?? 0;
+          context.router.replace(
+            SensorResultRoute(
+              names: names as List<String>,
+              fieldId: fieldId,
+            ),
+          );
           ScaffoldMessenger.of(context).showSnackBar(
             const SnackBar(
               content: Text('Sensor added successfully'),

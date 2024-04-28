@@ -30,9 +30,9 @@ class Repository {
     }
   }
 
-  Future<void> addField2(int id, Map<String, dynamic> body) async {
+  Future<void> addField2(SensorRequest body) async {
     try {
-      await _services.addField2(id, body);
+      await _services.addField2(body.fieldId, body);
     } catch (e) {
       rethrow;
     }

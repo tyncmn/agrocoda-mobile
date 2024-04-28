@@ -1,18 +1,66 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:cookers_app/controllers/field_controller.dart';
+import 'package:cookers_app/models/request.dart';
+import 'package:cookers_app/router/auto_router.gr.dart';
 import 'package:cookers_app/view/add_cencor_view.dart';
+import 'package:cookers_app/view/login_view.dart';
+import 'package:cookers_app/widgets/button.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intl/intl.dart';
 
 @RoutePage()
-class SensorResultView extends StatelessWidget {
-  const SensorResultView({super.key, required this.names});
+class SensorResultView extends ConsumerStatefulWidget {
+  const SensorResultView(
+      {super.key, required this.names, required this.fieldId});
 
   final List<String> names;
+  final int fieldId;
+
+  @override
+  ConsumerState<SensorResultView> createState() => _SensorResultViewState();
+}
+
+class _SensorResultViewState extends ConsumerState<SensorResultView> {
+  late final TextEditingController cropController, dateController;
+
+  @override
+  void initState() {
+    super.initState();
+    cropController = TextEditingController();
+    dateController = TextEditingController();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    cropController.dispose();
+    dateController.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
+    ref.listen(sensorController, (previous, next) {
+      next.maybeWhen(
+        orElse: () {},
+        data: (data) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(
+              content: Text('Sensor added successfully'),
+            ),
+          );
+          context.router.replaceAll([const MainRoute()]);
+        },
+        error: (error, stackTrace) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(
+              content: Text("Something went wrong"),
+            ),
+          );
+        },
+      );
+    });
     return Scaffold(
       appBar: AppBar(
         title: const Text('Sensor Results'),
@@ -24,7 +72,7 @@ class SensorResultView extends StatelessWidget {
         children: [
           ListView.builder(
             shrinkWrap: true,
-            itemCount: names.length,
+            itemCount: widget.names.length,
             itemBuilder: (context, index) {
               return Container(
                 padding: const EdgeInsets.all(10),
@@ -39,7 +87,7 @@ class SensorResultView extends StatelessWidget {
                 child: Column(
                   children: [
                     Text(
-                      names[index],
+                      widget.names[index],
                       style: const TextStyle(
                         color: Colors.black,
                         fontSize: 24,
@@ -48,16 +96,10 @@ class SensorResultView extends StatelessWidget {
                     ),
                     const SizedBox(height: 10),
                     const Text(
-                      "Harnessing Real-Time Soil Data: Revolutionizing Agriculture with Driven Sensor Technology.",
+                      "We've analyzed for you! Discover our tailored suggestions here to enhance the health and productivity of your plant. Explore now and provide the best care for your plant.",
                       textAlign: TextAlign.center,
                     ),
-                    const SizedBox(height: 24),
-                    ElevatedButton(
-                      onPressed: () {
-                        context.router.pushNamed('/fieldDetail');
-                      },
-                      child: const Text('View Details'),
-                    ),
+                    const SizedBox(height: 10),
                   ],
                 ),
               );
@@ -77,6 +119,29 @@ class SensorResultView extends StatelessWidget {
               icon: 'assets/components/calendar.svg',
               title: 'Enter the date of plant',
               controller: TextEditingController(),
+            ),
+          ),
+          const SizedBox(height: 24),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 64),
+            child: CustomButton(
+              title: 'Submit',
+              color: Theme.of(context).primaryColor,
+              textStyle: const TextStyle(
+                color: Colors.white,
+                fontSize: 20,
+                fontWeight: FontWeight.w400,
+              ),
+              onTap: () {
+                final request = SensorRequest(
+                  fieldId: widget.fieldId,
+                  userId: ref.watch(userIdProvider),
+                  date: dateController.text,
+                  crop: cropController.text,
+                );
+
+                ref.read(sensorController.notifier).addField2(request);
+              },
             ),
           ),
         ],
@@ -123,7 +188,8 @@ class _SensorDateFieldState extends State<SensorDateField> {
       setState(() {
         selectedDate = picked;
         if (widget.controller != null) {
-          widget.controller!.text = DateFormat('dd-MM-yyyy').format(picked); // Tarihi controller'a yaz
+          widget.controller!.text = DateFormat('dd-MM-yyyy')
+              .format(picked); // Tarihi controller'a yaz
         }
       });
     }
@@ -171,4 +237,3 @@ class _SensorDateFieldState extends State<SensorDateField> {
     );
   }
 }
-

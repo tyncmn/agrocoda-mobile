@@ -17,6 +17,28 @@ class LoginRequest {
   }
 }
 
+class SensorRequest {
+  final int fieldId;
+  final int userId;
+  final String date;
+  final String crop;
+
+  SensorRequest({
+    required this.fieldId,
+    required this.userId,
+    required this.date,
+    required this.crop,
+  });
+
+  Map<String, dynamic> toJson() {
+    return {
+      'user_id': userId,
+      'plant_date': date,
+      'crop': crop,
+    };
+  }
+}
+
 class FieldRequest {
   final int area;
   final String loc;
@@ -53,6 +75,3 @@ class CropRequest {
     };
   }
 }
-
-
-
