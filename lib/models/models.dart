@@ -1,6 +1,6 @@
 class LoginResponse {
   final int user;
-  final List<FieldModel> fields;
+  final List<LoginField> fields;
 
   const LoginResponse({
     required this.user,
@@ -11,7 +11,24 @@ class LoginResponse {
     return LoginResponse(
       user: json['user_id'],
       fields:
-          (json['fields'] as List).map((e) => FieldModel.fromJson(e)).toList(),
+          (json['fields'] as List).map((e) => LoginField.fromJson(e)).toList(),
+    );
+  }
+}
+
+class LoginField {
+  final int device;
+  final int field;
+
+  const LoginField({
+    required this.device,
+    required this.field,
+  });
+
+  factory LoginField.fromJson(Map<String, dynamic> json) {
+    return LoginField(
+      device: json['arduino_id'],
+      field: json['field_id'],
     );
   }
 }
@@ -60,31 +77,36 @@ class GetFields {
 }
 
 class Data {
-  final double? temperature,
-      humidity,
-      moisture,
-      nitrogen,
-      gas,
-      phosphorus,
-      potassium;
+  final int ardunioId;
+  final double? temprature;
+  final double? humidity;
+  final double? gas;
+  final double? moisture;
+  final double? nitrogen;
+  final double? phosphorus;
+  final double? potassium;
+
   const Data({
-    this.temperature,
+    required this.ardunioId,
+    this.temprature,
     this.humidity,
+    this.gas,
     this.moisture,
     this.nitrogen,
-    this.gas,
     this.phosphorus,
     this.potassium,
   });
+
   factory Data.fromJson(Map<String, dynamic> json) {
     return Data(
-      gas: json['gas'],
+      ardunioId: json['arduino_id'],
+      temprature: json['temperature'],
       humidity: json['humidity'],
+      gas: json['gas'],
       moisture: json['moisture'],
       nitrogen: json['nitrogen'],
       phosphorus: json['phosphorus'],
       potassium: json['potassium'],
-      temperature: json['temperature'],
     );
   }
 }

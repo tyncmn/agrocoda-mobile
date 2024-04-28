@@ -7,6 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+final deviceIdProvider = StateProvider<int>((ref) => 0);
+
 @RoutePage()
 class AddCencorView extends ConsumerStatefulWidget {
   const AddCencorView({super.key});
@@ -112,7 +114,8 @@ class _AddCencorViewState extends ConsumerState<AddCencorView> {
                 ),
                 onTap: () {
                   final controller = ref.read(fieldController.notifier);
-
+                  ref.read(deviceIdProvider.notifier).state =
+                      int.tryParse(_deviceController.text) ?? 0;
                   controller.addField(
                     FieldRequest(
                       arduino: int.tryParse(_deviceController.text) ?? 0,

@@ -46,9 +46,9 @@ class Repository {
     }
   }
 
-  Future<List<Data>> getField(int id, Map<String, dynamic> body) async {
+  Future<List<Data>> getField(int id) async {
     try {
-      return await _services.getField(id, body);
+      return await _services.getField(id);
     } catch (e) {
       rethrow;
     }

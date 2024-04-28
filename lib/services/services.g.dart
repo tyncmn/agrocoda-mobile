@@ -132,15 +132,11 @@ class _Services implements Services {
   }
 
   @override
-  Future<List<Data>> getField(
-    int id,
-    Map<String, dynamic> body,
-  ) async {
+  Future<List<Data>> getField(int id) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
-    _data.addAll(body);
+    const Map<String, dynamic>? _data = null;
     final _result =
         await _dio.fetch<List<dynamic>>(_setStreamType<List<Data>>(Options(
       method: 'GET',

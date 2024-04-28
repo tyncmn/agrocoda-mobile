@@ -1,40 +1,54 @@
 import 'dart:math';
 
 import 'package:auto_route/auto_route.dart';
+import 'package:cookers_app/controllers/data_controller.dart';
 import 'package:cookers_app/utils/assets_const.dart';
 import 'package:cookers_app/utils/extension.dart';
+import 'package:cookers_app/view/add_cencor_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:fl_chart/fl_chart.dart';
 
 import '../widgets/home_button.dart';
 
 @RoutePage()
-class HomeView extends StatefulWidget {
+class HomeView extends ConsumerStatefulWidget {
   const HomeView({super.key});
 
   @override
-  State<HomeView> createState() => _HomeViewState();
+  ConsumerState<HomeView> createState() => _HomeViewState();
 }
 
-class _HomeViewState extends State<HomeView> {
-
+class _HomeViewState extends ConsumerState<HomeView> {
   List<FlSpot> generateRandomData(int count) {
     int randomNumber(int min, int max) {
       return min + (max - min) * (100 * Random().nextDouble()).toInt();
     }
+
     return List.generate(count, (index) {
       return FlSpot(index.toDouble(), randomNumber(1, 10).toDouble());
     });
   }
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      final deviceId = ref.watch(deviceIdProvider);
+      ref.read(dataController.notifier).getField(deviceId);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
+    final data = ref.watch(dataController);
     return Scaffold(
       body: SafeArea(
         child: ListView(
           physics: const BouncingScrollPhysics(
-            parent:  AlwaysScrollableScrollPhysics(),
+            parent: AlwaysScrollableScrollPhysics(),
           ),
           padding: const EdgeInsets.symmetric(horizontal: 22),
           children: [
@@ -154,12 +168,10 @@ class ValueWidget extends StatelessWidget {
             // Set a fixed height for the chart
             child: LineChart(
               LineChartData(
-                gridData: const FlGridData(
-                    show: false), // Turn off grid lines
-                titlesData: const FlTitlesData(
-                    show: false), // Turn off axis titles
-                borderData:
-                    FlBorderData(show: false), // Turn off border
+                gridData: const FlGridData(show: false), // Turn off grid lines
+                titlesData:
+                    const FlTitlesData(show: false), // Turn off axis titles
+                borderData: FlBorderData(show: false), // Turn off border
                 lineBarsData: [
                   LineChartBarData(
                     color: const Color(0xFF5CD69D),

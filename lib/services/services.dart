@@ -44,9 +44,5 @@ abstract class Services {
   );
 
   @GET('data/{id}/all')
-  Future<List<Data>> getField(
-    @Path() int id,
-    @Body() Map<String, dynamic> body,
-  );
-
+  Future<List<Data>> getField(@Path() int id);
 }
