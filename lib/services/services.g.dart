@@ -49,12 +49,12 @@ class _Services implements Services {
   }
 
   @override
-  Future<FieldModel> addField(Map<String, dynamic> body) async {
+  Future<FieldModel> addField(FieldRequest request) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
-    _data.addAll(body);
+    _data.addAll(request.toJson());
     final _result = await _dio
         .fetch<Map<String, dynamic>>(_setStreamType<FieldModel>(Options(
       method: 'POST',
