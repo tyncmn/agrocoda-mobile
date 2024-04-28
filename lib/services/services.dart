@@ -40,7 +40,7 @@ abstract class Services {
 
   @GET('fields')
   Future<GetFields> getFields(
-    @Body() Map<String, dynamic> body,
+    @Field() int userId,
   );
 
   @GET('data/{id}/all')

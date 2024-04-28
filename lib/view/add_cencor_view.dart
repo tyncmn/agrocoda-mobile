@@ -37,6 +37,26 @@ class _AddCencorViewState extends ConsumerState<AddCencorView> {
 
   @override
   Widget build(BuildContext context) {
+    ref.listen(fieldController, (previous, next) {
+      next.maybeWhen(
+        orElse: () {},
+        data: (_) {
+          context.router.popForced();
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(
+              content: Text('Sensor added successfully'),
+            ),
+          );
+        },
+        error: (error, stackTrace) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text("Something went wrong"),
+            ),
+          );
+        },
+      );
+    });
     return Scaffold(
       appBar: AppBar(
         title: const Text('Add Sensor'),
@@ -50,21 +70,24 @@ class _AddCencorViewState extends ConsumerState<AddCencorView> {
         padding: const EdgeInsets.all(16),
         child: Column(
           children: [
-            const SensorTextField(
+            SensorTextField(
               icon: 'assets/components/hectar.svg',
               title: 'Enter your field hectar',
+              controller: _hectarController,
               keyboardType: TextInputType.number,
             ),
             const SizedBox(height: 20),
-            const SensorTextField(
+            SensorTextField(
               icon: 'assets/components/farm.svg',
               title: 'Enter your field location',
+              controller: _locController,
             ),
             const SizedBox(height: 20),
-            const SensorTextField(
+            SensorTextField(
               icon: 'assets/components/device.svg',
               title: 'Device ID',
               keyboardType: TextInputType.number,
+              controller: _deviceController,
             ),
             const Spacer(),
             Padding(

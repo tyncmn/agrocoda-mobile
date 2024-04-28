@@ -10,9 +10,8 @@ class LoginResponse {
   factory LoginResponse.fromJson(Map<String, dynamic> json) {
     return LoginResponse(
       user: json['user_id'],
-      fields: (json['fields'] as List)
-          .map((e) => FieldModel.fromJson(e))
-          .toList(),
+      fields:
+          (json['fields'] as List).map((e) => FieldModel.fromJson(e)).toList(),
     );
   }
 }
