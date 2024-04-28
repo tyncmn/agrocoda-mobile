@@ -1,8 +1,9 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:cookers_app/utils/assets_const.dart';
 import 'package:cookers_app/utils/extension.dart';
+import 'package:cookers_app/widgets/crop_status_card.dart';
+import 'package:cookers_app/widgets/detail_item_card.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-
 import '../widgets/custom_piechart.dart';
 
 @RoutePage()
@@ -14,6 +15,22 @@ class FieldDetailView extends StatefulWidget {
 }
 
 class _FieldDetailViewState extends State<FieldDetailView> {
+  final List<String> items = [
+    'Crop:',
+    'Field:',
+    'Size:',
+    'Sow date:',
+  ];
+  final List<String> cropStatus = [
+    'Planting date',
+    'Soil health',
+    'Accumalated GDD',
+  ];
+  final List<String> assets = [
+    AssetConst.calendar,
+    AssetConst.plant,
+    AssetConst.ther,
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -45,10 +62,70 @@ class _FieldDetailViewState extends State<FieldDetailView> {
       body: SafeArea(
         child: ListView(
           children: [
-            SizedBox(
-              width: 200,
-              height: 200,
-              child: CustomPieChart(),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const SizedBox(
+                  width: 185,
+                  height: 185,
+                  child: CustomPieChart(),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 27, right: 20),
+                  child: Column(
+                    children: [
+                      ...List.generate(
+                        4,
+                        (index) => DetailItemCard(
+                          item: items[index],
+                          result: '',
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 50),
+            Container(
+              margin: const EdgeInsets.symmetric(horizontal: 24),
+              decoration: BoxDecoration(
+                border: Border.all(color: context.primaryColor),
+                borderRadius: BorderRadius.circular(16),
+              ),
+              padding: const EdgeInsets.symmetric(
+                horizontal: 24,
+                vertical: 22,
+              ),
+              child: Column(
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        'Crop status',
+                        style: context.smallTextStyle,
+                      ),
+                      Text(
+                        'Setup',
+                        style: context.smallTextStyle.copyWith(
+                          color: context.primaryColor,
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 20),
+                  ...List.generate(
+                    3,
+                    (index) => CropStatusCard(
+                      cropStatus: cropStatus[index],
+                      asset: assets[index],
+                      result: '',
+                    ),
+                  ),
+                ],
+              ),
             ),
           ],
         ),
