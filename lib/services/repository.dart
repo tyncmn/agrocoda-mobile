@@ -1,4 +1,5 @@
 import 'package:cookers_app/models/models.dart';
+import 'package:cookers_app/models/request.dart';
 import 'package:cookers_app/services/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -12,9 +13,9 @@ class Repository {
 
   Repository(this._services);
 
-  Future<LoginResponse> login(int id, String password) async {
+  Future<LoginResponse> login(LoginRequest request) async {
     try {
-      return await _services.login(id, password);
+      return await _services.login(request);
     } catch (e) {
       rethrow;
     }

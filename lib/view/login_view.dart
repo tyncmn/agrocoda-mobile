@@ -1,18 +1,21 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:cookers_app/controllers/controllers.dart';
+import 'package:cookers_app/models/request.dart';
 import 'package:cookers_app/utils/extension.dart';
 import 'package:cookers_app/widgets/button.dart';
 import 'package:cookers_app/widgets/textfield.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 @RoutePage()
-class LoginView extends StatefulWidget {
+class LoginView extends ConsumerStatefulWidget {
   const LoginView({super.key});
 
   @override
-  State<LoginView> createState() => _LoginViewState();
+  ConsumerState<LoginView> createState() => _LoginViewState();
 }
 
-class _LoginViewState extends State<LoginView> {
+class _LoginViewState extends ConsumerState<LoginView> {
   late final TextEditingController mailContoller, passwordController;
   @override
   void initState() {
@@ -23,6 +26,21 @@ class _LoginViewState extends State<LoginView> {
 
   @override
   Widget build(BuildContext context) {
+    ref.listen(loginController, (previous, next) {
+      next.when(
+        data: (value) {
+          context.router.pushNamed('/main');
+        },
+        loading: () {},
+        error: (error, stack) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text("Something went wrong! Please try again."),
+            ),
+          );
+        },
+      );
+    });
     return Scaffold(
       resizeToAvoidBottomInset: true,
       body: SingleChildScrollView(
@@ -98,7 +116,13 @@ class _LoginViewState extends State<LoginView> {
             ),
             CustomButton(
               title: 'Login',
-              onTap: () => context.router.replaceNamed('/main'),
+              onTap: () {
+                final request = LoginRequest(
+                  id: int.tryParse(mailContoller.text) ?? 0,
+                  password: passwordController.text,
+                );
+                ref.read(loginController.notifier).login(request);
+              },
               color: context.primaryColor,
               textStyle: context.mediumTextStyle.copyWith(
                 color: Colors.white,

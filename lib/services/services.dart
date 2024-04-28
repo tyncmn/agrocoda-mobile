@@ -2,6 +2,7 @@ import 'dart:core';
 
 import 'package:cookers_app/interceptor.dart';
 import 'package:cookers_app/models/models.dart';
+import 'package:cookers_app/models/request.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:retrofit/http.dart';
 import 'package:retrofit/retrofit.dart';
@@ -20,12 +21,12 @@ final servicesProvider = Provider((ref) {
 @RestApi(baseUrl: 'http://207.154.216.121:5533/')
 abstract class Services {
   factory Services(Dio dio) {
+    dio.options.headers['Content-Type'] = 'application/json';
     return _Services(dio);
   }
   @POST('login')
   Future<LoginResponse> login(
-    @Field("user_id") int id,
-    @Field("password") String password,
+    @Body() LoginRequest request,
   );
 
   @POST('field')
