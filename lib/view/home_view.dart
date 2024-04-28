@@ -63,17 +63,58 @@ class HomeView extends StatelessWidget {
             ),
             const SizedBox(height: 50),
             Container(
-              height: 138,
+              height: 160,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(16),
                 border: Border.all(color: context.primaryColor),
               ),
               padding: const EdgeInsets.symmetric(
                 horizontal: 24,
-                vertical: 8,
+                vertical: 17,
               ),
-              child: Container(
-                color: Colors.amber,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    children: [
+                      SvgPicture.asset(AssetConst.flowerButton),
+                      const SizedBox(width: 10),
+                      Text(
+                        'Humidity of the soil',
+                        style: context.largeTextStyle.copyWith(
+                          color: context.primaryColor,
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 5),
+                  Text(
+                    '15%',
+                    style: context.largerTextStyle,
+                  ),
+                  SliderTheme(
+                    data: SliderThemeData(
+                      overlayShape: SliderComponentShape.noOverlay,
+                    ),
+                    child: Slider(
+                      value: 0.8,
+                      onChanged: (value) {},
+                    ),
+                  ),
+                  const SizedBox(height: 5),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        'See more',
+                        style: context.largeTextStyle.copyWith(
+                          color: const Color(0xFF5E5E5E),
+                        ),
+                      ),
+                      SvgPicture.asset(AssetConst.nextButton),
+                    ],
+                  ),
+                ],
               ),
             ),
           ],
