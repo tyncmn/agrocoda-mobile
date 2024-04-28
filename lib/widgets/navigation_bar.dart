@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-enum NavigationBarItem { home, cencor, map, profile }
+enum NavigationBarItem { home, cencor, profile }
 
 typedef OnNavigationItemTapped = void Function(NavigationBarItem item);
 
