@@ -24,84 +24,90 @@ class _LoginViewState extends State<LoginView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [
-          Container(
-            height: 300,
-            width: context.mediaQueryWidth,
-            decoration: const BoxDecoration(
-              borderRadius: BorderRadius.only(
-                bottomLeft: Radius.circular(46),
-                bottomRight: Radius.circular(46),
-              ),
-              image: DecorationImage(
-                image: AssetImage(
-                  'assets/components/farm.png',
+      resizeToAvoidBottomInset: true,
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Container(
+              height: 300,
+              width: context.mediaQueryWidth,
+              decoration: const BoxDecoration(
+                borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(46),
+                  bottomRight: Radius.circular(46),
                 ),
-                fit: BoxFit.fill,
-              ),
-            ),
-            padding: const EdgeInsets.symmetric(vertical: 25, horizontal: 25),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Spacer(),
-                Text(
-                  'Future of Farming',
-                  style: context.largerTextStyle.copyWith(color: Colors.white),
-                ),
-                const SizedBox(height: 12),
-                Text(
-                  'Making farming more efficient\nsustainable, and ready for the challenges of tomorrow',
-                  style: context.smallTextStyle.copyWith(
-                    color: Colors.white,
-                    fontSize: 12,
+                image: DecorationImage(
+                  image: AssetImage(
+                    'assets/components/farm.png',
                   ),
+                  fit: BoxFit.fill,
                 ),
-              ],
-            ),
-          ),
-          const SizedBox(height: 60),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 18),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: [
-                AuthTextField(
-                  textEditingController: mailContoller,
-                  hintText: 'Your ID',
-                ),
-                const SizedBox(height: 16),
-                AuthTextField(
-                  textEditingController: passwordController,
-                  hintText: 'Your password',
-                ),
-                const SizedBox(height: 10),
-                InkWell(
-                  onTap: () {},
-                  child: Text(
-                    'Forget password?',
-                    style: context.mediumTextStyle.copyWith(
-                      color: context.primaryColor,
-                      fontStyle: FontStyle.italic,
+              ),
+              padding: const EdgeInsets.symmetric(vertical: 25, horizontal: 25),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Spacer(),
+                  Text(
+                    'Future of Farming',
+                    style:
+                        context.largerTextStyle.copyWith(color: Colors.white),
+                  ),
+                  const SizedBox(height: 12),
+                  Text(
+                    'Making farming more efficient\nsustainable, and ready for the challenges of tomorrow',
+                    style: context.smallTextStyle.copyWith(
+                      color: Colors.white,
+                      fontSize: 12,
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
-          ),
-          const Spacer(),
-          CustomButton(
-            title: 'Login',
-            onTap: () => context.router.replaceNamed('/main'),
-            color: context.primaryColor,
-            textStyle: context.mediumTextStyle.copyWith(
-              color: Colors.white,
+            const SizedBox(height: 60),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 18),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  AuthTextField(
+                    textEditingController: mailContoller,
+                    hintText: 'Your ID',
+                  ),
+                  const SizedBox(height: 16),
+                  AuthTextField(
+                    textEditingController: passwordController,
+                    hintText: 'Your password',
+                  ),
+                  const SizedBox(height: 10),
+                  InkWell(
+                    onTap: () {},
+                    child: Text(
+                      'Forget password?',
+                      style: context.mediumTextStyle.copyWith(
+                        color: context.primaryColor,
+                        fontStyle: FontStyle.italic,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
-            width: 277,
-          ),
-          const SizedBox(height: 70),
-        ],
+            SizedBox(
+              height: context.dynamicHeight(0.2),
+            ),
+            CustomButton(
+              title: 'Login',
+              onTap: () => context.router.replaceNamed('/main'),
+              color: context.primaryColor,
+              textStyle: context.mediumTextStyle.copyWith(
+                color: Colors.white,
+              ),
+              width: 277,
+            ),
+            const SizedBox(height: 70),
+          ],
+        ),
       ),
     );
   }

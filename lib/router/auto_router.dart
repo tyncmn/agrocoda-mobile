@@ -15,10 +15,11 @@ class AppRouter extends $AppRouter {
   List<AutoRoute> get routes => <AutoRoute>[
         AutoRoute(
           page: EntryRoute.page,
+          initial: true,
         ),
         AutoRoute(
           page: MainRoute.page,
-          initial: true,
+          //initial: true,
           path: '/main',
           children: [
             AutoRoute(

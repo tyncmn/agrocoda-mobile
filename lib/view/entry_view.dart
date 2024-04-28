@@ -34,6 +34,7 @@ class EntryView extends StatelessWidget {
               ),
               const Spacer(),
               CustomButton(
+                width: 220,
                 title: 'Get Started',
                 onTap: () => context.router.replaceNamed('/login'),
               ),
