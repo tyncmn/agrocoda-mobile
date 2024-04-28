@@ -15,7 +15,6 @@ class MainView extends StatelessWidget {
       routes: const [
         HomeRoute(),
         CencorRoute(),
-        MapRoute(),
         ProfileRoute(),
       ],
       curve: Curves.easeInOut,

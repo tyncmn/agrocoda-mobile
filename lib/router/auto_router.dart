@@ -29,9 +29,6 @@ class AppRouter extends $AppRouter {
               page: CencorRoute.page,
             ),
             AutoRoute(
-              page: MapRoute.page,
-            ),
-            AutoRoute(
               page: ProfileRoute.page,
             ),
           ],

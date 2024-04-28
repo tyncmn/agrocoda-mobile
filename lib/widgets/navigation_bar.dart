@@ -60,11 +60,6 @@ class _CustomNavigationBarState extends State<CustomNavigationBar> {
             onPressed: () => _onNavigationItemTapped(NavigationBarItem.cencor),
           ),
           _NavItem(
-            isActive: _selectedItem == NavigationBarItem.map,
-            icon: 'assets/components/map.svg',
-            onPressed: () => _onNavigationItemTapped(NavigationBarItem.map),
-          ),
-          _NavItem(
             isActive: _selectedItem == NavigationBarItem.profile,
             icon: 'assets/components/user.svg',
             onPressed: () => _onNavigationItemTapped(NavigationBarItem.profile),
