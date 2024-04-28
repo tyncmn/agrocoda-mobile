@@ -30,7 +30,7 @@ abstract class Services {
   );
 
   @POST('field')
-  Future<FieldModel> addField(@Body() Map<String, dynamic> body);
+  Future<FieldModel> addField(@Body() FieldRequest request);
 
   @POST('field/{id}')
   Future<void> addField2(

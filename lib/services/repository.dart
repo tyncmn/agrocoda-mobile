@@ -21,9 +21,9 @@ class Repository {
     }
   }
 
-  Future<void> addField(Map<String, dynamic> body) async {
+  Future<void> addField(FieldRequest request) async {
     try {
-      await _services.addField(body);
+      await _services.addField(request);
     } catch (e) {
       rethrow;
     }
