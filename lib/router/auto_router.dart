@@ -41,5 +41,9 @@ class AppRouter extends $AppRouter {
           page: AddCencorRoute.page,
           path: '/add-sensor',
         ),
+        AutoRoute(
+          page: FieldDetailRoute.page,
+          path: '/fieldDetail',
+        ),
       ];
 }
