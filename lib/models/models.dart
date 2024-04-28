@@ -1,3 +1,22 @@
+class LoginResponse {
+  final int user;
+  final List<FieldModel> fields;
+
+  const LoginResponse({
+    required this.user,
+    required this.fields,
+  });
+
+  factory LoginResponse.fromJson(Map<String, dynamic> json) {
+    return LoginResponse(
+      user: json['user'],
+      fields: (json['fields'] as List)
+          .map((e) => FieldModel.fromJson(e))
+          .toList(),
+    );
+  }
+}
+
 class FieldModel {
   final int? id;
   final List<String>? recommend;

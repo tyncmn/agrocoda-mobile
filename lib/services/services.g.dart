@@ -13,7 +13,7 @@ class _Services implements Services {
     this._dio, {
     this.baseUrl,
   }) {
-    baseUrl ??= 'http://207.154.216.121:5955/';
+    baseUrl ??= 'http://207.154.216.121:5533/';
   }
 
   final Dio _dio;
@@ -21,14 +21,19 @@ class _Services implements Services {
   String? baseUrl;
 
   @override
-  Future<HttpResponse<int>> login(Map<String, dynamic> body) async {
+  Future<LoginResponse> login(
+    int id,
+    String password,
+  ) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
-    _data.addAll(body);
-    final _result =
-        await _dio.fetch<int>(_setStreamType<HttpResponse<int>>(Options(
+    final _data = {
+      'user_id': id,
+      'password': password,
+    };
+    final _result = await _dio
+        .fetch<Map<String, dynamic>>(_setStreamType<LoginResponse>(Options(
       method: 'POST',
       headers: _headers,
       extra: _extra,
@@ -44,20 +49,19 @@ class _Services implements Services {
               _dio.options.baseUrl,
               baseUrl,
             ))));
-    final value = _result.data!;
-    final httpResponse = HttpResponse(value, _result);
-    return httpResponse;
+    final value = LoginResponse.fromJson(_result.data!);
+    return value;
   }
 
   @override
-  Future<HttpResponse<FieldModel>> addField(Map<String, dynamic> body) async {
+  Future<FieldModel> addField(Map<String, dynamic> body) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(body);
-    final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<HttpResponse<FieldModel>>(Options(
+    final _result = await _dio
+        .fetch<Map<String, dynamic>>(_setStreamType<FieldModel>(Options(
       method: 'POST',
       headers: _headers,
       extra: _extra,
@@ -74,8 +78,7 @@ class _Services implements Services {
               baseUrl,
             ))));
     final value = FieldModel.fromJson(_result.data!);
-    final httpResponse = HttpResponse(value, _result);
-    return httpResponse;
+    return value;
   }
 
   @override
@@ -107,14 +110,14 @@ class _Services implements Services {
   }
 
   @override
-  Future<HttpResponse<GetFields>> getFields(Map<String, dynamic> body) async {
+  Future<GetFields> getFields(Map<String, dynamic> body) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(body);
-    final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<HttpResponse<GetFields>>(Options(
+    final _result = await _dio
+        .fetch<Map<String, dynamic>>(_setStreamType<GetFields>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
@@ -131,12 +134,11 @@ class _Services implements Services {
               baseUrl,
             ))));
     final value = GetFields.fromJson(_result.data!);
-    final httpResponse = HttpResponse(value, _result);
-    return httpResponse;
+    return value;
   }
 
   @override
-  Future<HttpResponse<List<Data>>> getField(
+  Future<List<Data>> getField(
     int id,
     Map<String, dynamic> body,
   ) async {
@@ -145,8 +147,8 @@ class _Services implements Services {
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(body);
-    final _result = await _dio
-        .fetch<List<dynamic>>(_setStreamType<HttpResponse<List<Data>>>(Options(
+    final _result =
+        await _dio.fetch<List<dynamic>>(_setStreamType<List<Data>>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
@@ -165,8 +167,7 @@ class _Services implements Services {
     var value = _result.data!
         .map((dynamic i) => Data.fromJson(i as Map<String, dynamic>))
         .toList();
-    final httpResponse = HttpResponse(value, _result);
-    return httpResponse;
+    return value;
   }
 
   RequestOptions _setStreamType<T>(RequestOptions requestOptions) {
