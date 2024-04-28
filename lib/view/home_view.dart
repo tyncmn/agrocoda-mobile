@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:cookers_app/utils/assets_const.dart';
 import 'package:cookers_app/utils/extension.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../widgets/home_button.dart';
@@ -42,17 +43,17 @@ class HomeView extends StatelessWidget {
                 HomeButton(
                   asset: AssetConst.humidityButton,
                   title: '2.41',
-                  subtitle: 'humidity in the air',
+                  subtitle: 'HUMIDITY',
                 ),
                 HomeButton(
                   asset: AssetConst.phButton,
                   title: '68m²',
-                  subtitle: 'pH dəyəri',
+                  subtitle: 'PH LEVEL',
                 ),
                 HomeButton(
                   asset: AssetConst.humidityButton,
                   title: '73%',
-                  subtitle: 'Tempratur',
+                  subtitle: 'TEMPRATURE',
                 ),
                 HomeButton(
                   asset: AssetConst.humidityButton,
@@ -63,7 +64,6 @@ class HomeView extends StatelessWidget {
             ),
             const SizedBox(height: 50),
             Container(
-              height: 160,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(16),
                 border: Border.all(color: context.primaryColor),
@@ -76,13 +76,15 @@ class HomeView extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      SvgPicture.asset(AssetConst.flowerButton),
+                      SizedBox(child: SvgPicture.asset(AssetConst.flowerButton)),
                       const SizedBox(width: 10),
                       Text(
                         'Humidity of the soil',
                         style: context.largeTextStyle.copyWith(
                           color: context.primaryColor,
+                          fontSize: 18,
                         ),
                       ),
                     ],
@@ -109,6 +111,7 @@ class HomeView extends StatelessWidget {
                         'See more',
                         style: context.largeTextStyle.copyWith(
                           color: const Color(0xFF5E5E5E),
+                          fontSize: 16,
                         ),
                       ),
                       SvgPicture.asset(AssetConst.nextButton),
