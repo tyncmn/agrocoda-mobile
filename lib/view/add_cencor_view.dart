@@ -1,5 +1,4 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -18,14 +17,14 @@ class AddCencorView extends StatelessWidget {
           onPressed: () => Navigator.pop(context),
         ),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16),
+      body: const Padding(
+        padding: EdgeInsets.all(16),
         child: Column(
           children: [
             SensorField(),
-            const SizedBox(height: 20),
+            SizedBox(height: 20),
             SensorField(),
-            const SizedBox(height: 20),
+            SizedBox(height: 20),
             SensorField(),
           ],
         ),
