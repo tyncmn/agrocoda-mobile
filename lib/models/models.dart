@@ -35,7 +35,7 @@ class LoginField {
 
 class FieldModel {
   final int? id;
-  final List<Recommend?> recommend;
+  final List<String> recommend;
   const FieldModel({
     this.id,
     required this.recommend,
@@ -43,18 +43,20 @@ class FieldModel {
   factory FieldModel.fromJson(Map<String, dynamic> json) {
     return FieldModel(
       id: json['id'],
-      recommend: (json['recommend'] as List)
-          .map((e) => Recommend.fromJson(e))
+      recommend: (json['recommend'] as List<dynamic>)
+          .map(
+            (e) => e.toString(),
+          )
           .toList(),
     );
   }
 }
 
 class Recommend {
-  final name;
+  final String name;
 
   const Recommend({
-    this.name,
+    required this.name,
   });
 
   factory Recommend.fromJson(Map<String, dynamic> json) {

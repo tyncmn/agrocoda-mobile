@@ -1,7 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:cookers_app/controllers/field_controller.dart';
 import 'package:cookers_app/models/request.dart';
-import 'package:cookers_app/router/auto_router.gr.dart';
+import 'package:cookers_app/router/auto_router.dart';
 import 'package:cookers_app/widgets/button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -44,13 +44,13 @@ class _AddCencorViewState extends ConsumerState<AddCencorView> {
       next.maybeWhen(
         orElse: () {},
         data: (data) {
-          final List<String?> names =
-              data.recommend.map<String>((e) => e?.name).toList();
+          print('Salam qaqa ${data.recommend[0]}');
 
           final int fieldId = data.id ?? 0;
+
           context.router.replace(
             SensorResultRoute(
-              names: names as List<String>,
+              names: data.recommend,
               fieldId: fieldId,
             ),
           );
@@ -62,8 +62,8 @@ class _AddCencorViewState extends ConsumerState<AddCencorView> {
         },
         error: (error, stackTrace) {
           ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(
-              content: Text("Something went wrong"),
+            SnackBar(
+              content: Text(error.toString()),
             ),
           );
         },
@@ -73,10 +73,7 @@ class _AddCencorViewState extends ConsumerState<AddCencorView> {
       appBar: AppBar(
         title: const Text('Add Sensor'),
         centerTitle: true,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back_ios),
-          onPressed: () => Navigator.pop(context),
-        ),
+        automaticallyImplyLeading: false,
       ),
       body: Padding(
         padding: const EdgeInsets.all(16),

@@ -20,12 +20,12 @@ class EntryView extends StatelessWidget {
               SvgPicture.asset('assets/components/entry.svg'),
               const SizedBox(height: 10),
               Text(
-                'ECHRON',
+                'AGREEN',
                 style: context.headerTitleStyle,
               ),
               const SizedBox(height: 80),
               const Text(
-                'Welcome to the ECHRON !',
+                'Welcome to the AGREEN !',
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 24,

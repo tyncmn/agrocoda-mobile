@@ -108,7 +108,9 @@ class _HomeViewState extends ConsumerState<HomeView> {
                   ],
                 ),
                 const SizedBox(height: 50),
-                HumidityCard(moisture: data.last.moisture,),
+                HumidityCard(
+                  moisture: data.last.moisture,
+                ),
                 const SizedBox(height: 25),
                 GridView(
                   shrinkWrap: true,

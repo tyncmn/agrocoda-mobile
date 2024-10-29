@@ -4,7 +4,6 @@ import 'package:cookers_app/interceptor.dart';
 import 'package:cookers_app/models/models.dart';
 import 'package:cookers_app/models/request.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:retrofit/http.dart';
 import 'package:retrofit/retrofit.dart';
 import 'package:dio/dio.dart';
 
@@ -18,7 +17,7 @@ final servicesProvider = Provider((ref) {
   return Services(dio);
 });
 
-@RestApi(baseUrl: 'http://207.154.216.121:5533/')
+@RestApi(baseUrl: 'http://206.189.106.19:5533/')
 abstract class Services {
   factory Services(Dio dio) {
     dio.options.headers['Content-Type'] = 'application/json';

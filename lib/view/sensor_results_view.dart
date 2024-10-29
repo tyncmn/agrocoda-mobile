@@ -1,7 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:cookers_app/controllers/field_controller.dart';
 import 'package:cookers_app/models/request.dart';
-import 'package:cookers_app/router/auto_router.gr.dart';
+import 'package:cookers_app/router/auto_router.dart';
 import 'package:cookers_app/view/add_cencor_view.dart';
 import 'package:cookers_app/view/login_view.dart';
 import 'package:cookers_app/widgets/button.dart';
@@ -12,8 +12,11 @@ import 'package:intl/intl.dart';
 
 @RoutePage()
 class SensorResultView extends ConsumerStatefulWidget {
-  const SensorResultView(
-      {super.key, required this.names, required this.fieldId});
+  const SensorResultView({
+    super.key,
+    required this.names,
+    required this.fieldId,
+  });
 
   final List<String> names;
   final int fieldId;

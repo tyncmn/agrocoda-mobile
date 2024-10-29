@@ -1,7 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:cookers_app/controllers/controllers.dart';
 import 'package:cookers_app/models/request.dart';
-import 'package:cookers_app/router/auto_router.gr.dart';
+import 'package:cookers_app/router/auto_router.dart';
 import 'package:cookers_app/utils/extension.dart';
 import 'package:cookers_app/view/add_cencor_view.dart';
 import 'package:cookers_app/widgets/button.dart';
