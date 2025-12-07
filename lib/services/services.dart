@@ -17,7 +17,7 @@ final servicesProvider = Provider((ref) {
   return Services(dio);
 });
 
-@RestApi(baseUrl: 'http://206.189.106.19:5533/')
+@RestApi(baseUrl: 'http://10.20.2.18:8000/')
 abstract class Services {
   factory Services(Dio dio) {
     dio.options.headers['Content-Type'] = 'application/json';
@@ -42,6 +42,17 @@ abstract class Services {
     @Field() int userId,
   );
 
+  // Kyocoda00Kk
+  // 137.184.119.247:5533
+  // arduinoId = 123
+
   @GET('data/{id}/all')
   Future<List<Data>> getField(@Path() int id);
+
+  // Dashboard endpoints
+  @GET('items/bare')
+  Future<List<SensorData>> getSensorDataBare();
+
+  @GET('items/recent')
+  Future<DashboardData> getDashboardData();
 }

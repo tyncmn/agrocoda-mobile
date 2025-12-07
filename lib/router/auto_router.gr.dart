@@ -1,3 +1,4 @@
+// dart format width=80
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
 // **************************************************************************
@@ -13,10 +14,7 @@ part of 'auto_router.dart';
 /// [AddCencorView]
 class AddCencorRoute extends PageRouteInfo<void> {
   const AddCencorRoute({List<PageRouteInfo>? children})
-      : super(
-          AddCencorRoute.name,
-          initialChildren: children,
-        );
+    : super(AddCencorRoute.name, initialChildren: children);
 
   static const String name = 'AddCencorRoute';
 
@@ -32,10 +30,7 @@ class AddCencorRoute extends PageRouteInfo<void> {
 /// [CencorView]
 class CencorRoute extends PageRouteInfo<void> {
   const CencorRoute({List<PageRouteInfo>? children})
-      : super(
-          CencorRoute.name,
-          initialChildren: children,
-        );
+    : super(CencorRoute.name, initialChildren: children);
 
   static const String name = 'CencorRoute';
 
@@ -48,13 +43,26 @@ class CencorRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [DashboardView]
+class DashboardRoute extends PageRouteInfo<void> {
+  const DashboardRoute({List<PageRouteInfo>? children})
+    : super(DashboardRoute.name, initialChildren: children);
+
+  static const String name = 'DashboardRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const DashboardView();
+    },
+  );
+}
+
+/// generated route for
 /// [EntryView]
 class EntryRoute extends PageRouteInfo<void> {
   const EntryRoute({List<PageRouteInfo>? children})
-      : super(
-          EntryRoute.name,
-          initialChildren: children,
-        );
+    : super(EntryRoute.name, initialChildren: children);
 
   static const String name = 'EntryRoute';
 
@@ -70,10 +78,7 @@ class EntryRoute extends PageRouteInfo<void> {
 /// [FieldDetailView]
 class FieldDetailRoute extends PageRouteInfo<void> {
   const FieldDetailRoute({List<PageRouteInfo>? children})
-      : super(
-          FieldDetailRoute.name,
-          initialChildren: children,
-        );
+    : super(FieldDetailRoute.name, initialChildren: children);
 
   static const String name = 'FieldDetailRoute';
 
@@ -89,10 +94,7 @@ class FieldDetailRoute extends PageRouteInfo<void> {
 /// [HomeView]
 class HomeRoute extends PageRouteInfo<void> {
   const HomeRoute({List<PageRouteInfo>? children})
-      : super(
-          HomeRoute.name,
-          initialChildren: children,
-        );
+    : super(HomeRoute.name, initialChildren: children);
 
   static const String name = 'HomeRoute';
 
@@ -108,10 +110,7 @@ class HomeRoute extends PageRouteInfo<void> {
 /// [LoginView]
 class LoginRoute extends PageRouteInfo<void> {
   const LoginRoute({List<PageRouteInfo>? children})
-      : super(
-          LoginRoute.name,
-          initialChildren: children,
-        );
+    : super(LoginRoute.name, initialChildren: children);
 
   static const String name = 'LoginRoute';
 
@@ -127,10 +126,7 @@ class LoginRoute extends PageRouteInfo<void> {
 /// [MainView]
 class MainRoute extends PageRouteInfo<void> {
   const MainRoute({List<PageRouteInfo>? children})
-      : super(
-          MainRoute.name,
-          initialChildren: children,
-        );
+    : super(MainRoute.name, initialChildren: children);
 
   static const String name = 'MainRoute';
 
@@ -146,10 +142,7 @@ class MainRoute extends PageRouteInfo<void> {
 /// [ProfileView]
 class ProfileRoute extends PageRouteInfo<void> {
   const ProfileRoute({List<PageRouteInfo>? children})
-      : super(
-          ProfileRoute.name,
-          initialChildren: children,
-        );
+    : super(ProfileRoute.name, initialChildren: children);
 
   static const String name = 'ProfileRoute';
 
@@ -170,14 +163,10 @@ class SensorResultRoute extends PageRouteInfo<SensorResultRouteArgs> {
     required int fieldId,
     List<PageRouteInfo>? children,
   }) : super(
-          SensorResultRoute.name,
-          args: SensorResultRouteArgs(
-            key: key,
-            names: names,
-            fieldId: fieldId,
-          ),
-          initialChildren: children,
-        );
+         SensorResultRoute.name,
+         args: SensorResultRouteArgs(key: key, names: names, fieldId: fieldId),
+         initialChildren: children,
+       );
 
   static const String name = 'SensorResultRoute';
 

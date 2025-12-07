@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:cookers_app/view/add_cencor_view.dart';
 import 'package:cookers_app/view/cencor_view.dart';
+import 'package:cookers_app/view/dashboard_view.dart';
 import 'package:cookers_app/view/entry_view.dart';
 import 'package:cookers_app/view/field_detail_view.dart';
 import 'package:cookers_app/view/home_view.dart';
@@ -58,6 +59,10 @@ class AppRouter extends RootStackRouter {
         AutoRoute(
           page: SensorResultRoute.page,
           path: '/sensorResult',
+        ),
+        AutoRoute(
+          page: DashboardRoute.page,
+          path: '/dashboard',
         ),
       ];
 }

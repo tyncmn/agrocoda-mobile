@@ -53,4 +53,21 @@ class Repository {
       rethrow;
     }
   }
+
+  // Dashboard methods
+  Future<List<SensorData>> getSensorDataBare() async {
+    try {
+      return await _services.getSensorDataBare();
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  Future<DashboardData> getDashboardData() async {
+    try {
+      return await _services.getDashboardData();
+    } catch (e) {
+      rethrow;
+    }
+  }
 }

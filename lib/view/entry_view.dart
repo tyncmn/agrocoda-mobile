@@ -20,12 +20,12 @@ class EntryView extends StatelessWidget {
               SvgPicture.asset('assets/components/entry.svg'),
               const SizedBox(height: 10),
               Text(
-                'AGREEN',
+                'AGROCODA',
                 style: context.headerTitleStyle,
               ),
               const SizedBox(height: 80),
               const Text(
-                'Welcome to the AGREEN !',
+                'Welcome to the AGROCODA !',
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 24,
@@ -36,7 +36,7 @@ class EntryView extends StatelessWidget {
               CustomButton(
                 width: 220,
                 title: 'Get Started',
-                onTap: () => context.router.replaceNamed('/login'),
+                onTap: () => context.router.replaceNamed('/dashboard'),
               ),
               const SizedBox(height: 50),
             ],
