@@ -10,7 +10,7 @@ part of 'services.dart';
 
 class _Services implements Services {
   _Services(this._dio, {this.baseUrl, this.errorLogger}) {
-    baseUrl ??= 'http://10.20.2.18:8000/';
+    baseUrl ??= 'http://10.248.78.245:8000/';
   }
 
   final Dio _dio;

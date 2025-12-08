@@ -17,7 +17,7 @@ final servicesProvider = Provider((ref) {
   return Services(dio);
 });
 
-@RestApi(baseUrl: 'http://10.20.2.18:8000/')
+@RestApi(baseUrl: 'http://10.248.78.245:8000/')
 abstract class Services {
   factory Services(Dio dio) {
     dio.options.headers['Content-Type'] = 'application/json';
